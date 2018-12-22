@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+<div style="margin-bottom:2rem;" class="container">
+    <header class="jumbotron">
+        <h1 style="color:bisque;">Welcome To LakeSide!! </h1>
+        <p style="color:bisque;">Take a look to our all categories of Hotels and Resorts</p>
+        <p>
+            <a style="background-color:#212121;" class="btn btn-raised btn-primary" href="/hotels/new">
+                Add a New Hotel
+            </a>
+
+        </p>
+
+    </header>
+
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% hotels.forEach(function(hotel){ %>
+        <div class="col-md-3 col-sm-6">
+            <div style="margin-bottom:2rem;" class="card">
+                <img class="card-img-top" width="350" height="200" src="<%= hotel.image %>" alt="">
+                <!-- <img src="<%= hotel.image %>" width="350" height="200" /> -->
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= hotel.name %>
+                    </h5>
+                    <p>
+                        <!-- <a style="background-color:#484848" href="/hotels/<%= hotel._id %>" class="btn btn-raised btn-primary">More
+                            info</a> -->
+                        <a href="/hotels/<%= hotel._id %>">
+                            <button type="button" class="btn btn-raised">More info</button>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <% });%>
+    </div>
+</div>
+
+<body style="background-image:url(https://besthqwallpapers.com/Uploads/29-3-2018/46391/thumb2-4k-blue-and-gray-material-design-android-lollipop.jpg)">
+
+</body>
+<% include ../partials/footer %>

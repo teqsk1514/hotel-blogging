@@ -1,0 +1,84 @@
+<% include ../partials/header %>
+<div style="margin-bottom:2rem;" class="container">
+    <div style="background-color:#c7c7c7" class="card">
+        <!-- <div class="container"> -->
+        <div class="card-body">
+            <h2 style="color:#4b2c20;">
+                My Bookings
+            </h2>
+            <!-- <p>
+                    For
+                    <%= user %>
+                </p>
+                <hr> -->
+            <%if(len === 0){ %>
+            <div>
+                Not done any booking
+            </div>
+            <% }%>
+            <div>
+                <% bookingDetails.forEach(function(booked){ %>
+                <div class="card">
+                    <div style="background-color:#f5f5f5" class="card-header">
+                        <div class="container">
+                            <div class="row justify-content-between">
+                                <p style="background-color:#1565c0;cursor:auto;" class="btn btn-raised btn-primary col-lg-4 col-md-6">
+                                    Id:
+                                    <%=booked._id %>
+                                </p>
+                                <p style="background-color:#F9AA33;cursor:auto; " class="btn btn-raised col-lg-2 col-md-2">
+                                    Rs
+                                    <%= booked.hotel.price %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <img class="image-responsive" height="100%" width="100%" src="<%=booked.hotel.image %>" />
+                            </div>
+                            <div class="col-lg-9">
+                                <h5 class="card-title">
+                                    <%= booked.hotel.name %>
+                                </h5>
+                                <p class="card-text">
+                                    User Address:
+                                    <%= booked.address %>
+                                </p>
+                                <p class="card-text">
+                                    User Phoneno:
+                                    <%= booked.phoneno %>
+                                </p>
+                                <p class="card-text">
+                                    Booked on:
+                                    <%= booked.booked_on %>
+                                </p>
+                            </div>
+
+                        </div>
+                        <div style="margin-top:1rem;" class="row">
+                            <div class="col">
+                                <a href="/hotels/<%= booked.hotel.id %>" style="background-color:#3d00e0" class="btn btn-raised btn-primary">See
+                                    Hotel Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown-divider"></div>
+                <% });%>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a href="/hotels">
+                        <button style="background-color:#29434e;" class="btn btn-raised btn-info">Go Back</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+    </div>
+</div>
+
+<% include ../partials/footer %>

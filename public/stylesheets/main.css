@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+body{
+    font-family: 'Kanit', sans-serif;
+    background-image: url(https://www.navitasventures.com/wp-content/uploads/2016/06/Material-design-background-514054880_2126x1416.jpeg);
+    background-size: cover;
+    
+}
+
+.thumbnail img{
+    width: 100%;
+}
+.thumbnail{
+    padding: 0%;
+}
+.thumbnail .caption-full{
+    padding: 9px;
+}
+.jumbotron{
+    background-image: url(https://www.navitasventures.com/wp-content/uploads/2016/06/Material-design-background-514054880_2126x1416.jpeg);
+    background-size: 100%;
+    
+ 
+}
+/* .navbar {
+    background-image: url(https://wallpaper.wiki/wp-content/uploads/2017/05/Desktop-hd-red-and-black-wallpaper-for-walls.png);
+    background-size: 100%;
+    
+} */
+.del{
+    display: inline;
+}
+#logo{
+    height: 30px;
+}
+#logo2{
+    height: 115px;
+    left: 20%;
+}
+
+[type="button"]{
+    background-color: #484848;
+    color: white;
+}
+[type="button"]:hover{
+    background-color: white;
+    color: #484848;
+}

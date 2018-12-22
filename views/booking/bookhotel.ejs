@@ -1,0 +1,51 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <h2>User Booking Information</h2>
+                <!-- <form action="/hotels/<%= hotel._id %>/book/booked" method="GET"> -->
+                <form action="/hotels/<%= hotel._id %>/book" method="POST">
+                    <!-- <div class="form-group">
+                        <label for="formGroupExampleInput">Hotel Id</label>
+                        <input name="hotelid" disabled placeholder="<%= hotel._id %>" type="text" class="form-control"
+                            id="formGroupExampleInput">
+                    </div> -->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Hotel Name</label>
+                        <input name="hotelname" disabled placeholder="<%= hotel.name %>" type="text" class="form-control"
+                            id="formGroupExampleInput">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Hotel Price</label>
+                        <input name="hotelprice" disabled placeholder="<%= hotel.price %>" type="text" class="form-control"
+                            id="formGroupExampleInput">
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="formGroupExampleInput">User Id</label>
+                        <input name="userid" disabled placeholder="<%= user._id %>" type="text" class="form-control" id="formGroupExampleInput">
+                    </div> -->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">User Name</label>
+                        <input name="username" disabled placeholder="<%= user.username %>" type="text" class="form-control"
+                            id="formGroupExampleInput">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="bmd-label-floating">Phone Number</label>
+                        <input name="phoneno" required type="text" class="form-control" id="formGroupExampleInput">
+                    </div>
+                    <div class="form-group bmd-form-group">
+                        <!-- manually specified -->
+                        <label for="formGroupExampleInput2" class="bmd-label-floating">Address</label>
+                        <textarea name="address" required type="text" class="form-control" id="formGroupExampleInput2"
+                            rows="6"></textarea>
+                    </div>
+                    <a style="background-color:#29434e;" class="btn btn-raised btn-secondary" href="/hotels/<%= hotel._id %>">Go
+                        Back</a>
+                    <button style="background-color:#1565c0;" type="submit" class="btn btn-primary btn-raised">Book</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>

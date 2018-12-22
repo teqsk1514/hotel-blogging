@@ -1,0 +1,99 @@
+<% include ../partials/header %>
+<div style="margin-bottom:2rem;" class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <!-- <div class="col-md-3">
+                    <div class="lead">
+                        <img id="logo2" src="https://www.freeiconspng.com/uploads/beach-icon-png-13.png" />
+                    </div>
+                    <div class="list-group">
+                        <li class="list-group-item active">Info1</li>
+                        <li class="list-group-item">Info2</li>
+                        <li class="list-group-item">Info3</li>
+                    </div>
+                </div> -->
+                <div class="col-md-12">
+                    <div class="thumbnail">
+                        <img class="image-responsive card-image" height="480" width="720" src="<%=hotel.image %>" width="100%" />
+                        <div class="caption-full">
+                            <h4 class="pull-right">Rs
+                                <%=hotel.price %> /Day</h4>
+                            <h4><a>
+                                    <%= hotel.name %></a></h4>
+                            <p>
+                                <%= hotel.description %>
+                            </p>
+                            <p>
+                                <em> Added By
+                                    <%= hotel.author.username %></em>
+                            </p>
+                            <p>
+                                <em> Added on
+                                    <%= hotel.created_at %></em>
+                            </p>
+                            <% if(hotel.updated_at){ %>
+                            <p>
+                                <em> Updated on
+                                    <%= hotel.updated_at %></em>
+                            </p>
+                            <% } %>
+                            <% if(currentUser && hotel.author.id.equals(currentUser._id)){ %>
+                            <a class="btn btn-xs btn-warning" href="/hotels/<%= hotel._id  %>/edit">Edit</a>
+                            <form class="del" action="/hotels/<%=hotel._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-xs btn-danger">Delete</button>
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% if(!(currentUser && hotel.author.id.equals(currentUser._id))){ %>
+                    <div>
+                        <a href="/hotels/<%=hotel._id %>/book">
+                            <button style="background-color:#212121;" class="btn btn-xs btn-raised btn-success">Book</button>
+                        </a>
+                    </div>
+                    <% } %>
+                    <div class="well">
+                        <div class="text-right">
+                            <a style="color:#3d00e0" class="btn btn-success" href="/hotels/<%=hotel._id %>/comments/new">Add
+                                New Comment</a>
+                        </div>
+                        <hr>
+                        <% hotel.comments.reverse().forEach(function(comment){ %>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <strong> By
+                                    <%= comment.author.username %></strong>
+                                <p>Added on
+                                    <%= comment.comment_on %>
+                                </p>
+                                <% if(comment.comment_updated_on){%>
+                                <p>Updated on
+                                    <%= comment.comment_updated_on %>
+                                </p>
+                                <% } %>
+                                <p><strong>
+                                        <%= comment.text %>
+                                    </strong>
+                                </p>
+                                <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                <a class="btn btn-xs btn-warning" href="/hotels/<%= hotel._id %>/comments/<%= comment._id %>/edit">
+                                    Edit
+                                </a>
+                                <form style="display:inline;" action="/hotels/<%= hotel._id %>/comments/<%= comment._id %>?_method=DELETE"
+                                    method="POST">
+                                    <button class="btn btn-xs btn-danger">Delete</button>
+                                </form>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <% })  %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
