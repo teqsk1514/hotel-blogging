@@ -1,4 +1,6 @@
 <% include ../partials/header %>
+
+
 <div style="margin-bottom:2rem;" class="container">
     <header class="jumbotron">
         <h1 style="color:bisque;">Welcome To LakeSide!! </h1>
@@ -13,7 +15,7 @@
     </header>
 
     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-        <% hotels.forEach(function(hotel){ %>
+        <% hotels.reverse().forEach(function(hotel){ %>
         <div class="col-md-3 col-sm-6">
             <div style="margin-bottom:2rem;" class="card">
                 <img class="card-img-top" width="350" height="200" src="<%= hotel.image %>" alt="">
@@ -34,9 +36,98 @@
         </div>
         <% });%>
     </div>
+    <!-- adasdasdadsasd -->
+    <!-- <html> -->
+    <!-- <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+    </style> -->
+
+    <!-- <body> -->
+
+
+    <div>
+
+    </div>
+    <!-- 
+
+    <h1>The XMLHttpRequest Object</h1>
+
+    <form action="">
+        <select name="customers" onchange="showCustomer(this.value)">
+            <option value="">Select a customer:</option>
+            <option value="ALFKI">Alfreds Futterkiste</option>
+            <option value="NORTS ">North/South</option>
+            <option value="WOLZA">Wolski Zajazd</option>
+        </select>
+    </form>
+    <br>
+    <div id="txtHint">Customer info will be listed here...</div>
+
+    <script>
+        function showCustomer(str) {
+            var xhttp;
+            if (str == "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            }
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "getcustomer.asp?q=" + str, true);
+            xhttp.send();
+        }
+    </script> -->
+
+    <!-- </body> -->
+
+    <!-- </html> -->
+    <!-- asdadsasda -->
+
 </div>
 
 <body style="background-image:url(https://besthqwallpapers.com/Uploads/29-3-2018/46391/thumb2-4k-blue-and-gray-material-design-android-lollipop.jpg)">
 
 </body>
 <% include ../partials/footer %>
+
+<!-- <div>
+    <button id="gethotels">Click me</button>
+</div>
+<div id="show hotels">
+
+</div>
+<script type="text/javascript">
+    $(document).ready(() => {
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open('POST', true);
+        httpRequest.setRequestHeader('Access-Control-Allow-Origin', '*');
+        httpRequest.setRequestHeader('Content-Type', 'application/json');
+        console.log('hello brower?????');
+        $('#gethotels').click(() => {
+
+            $.ajax({
+                url: "https://api.mlab.com/api/1/databases/hotel/collections/hotels?apiKey=MFcosI02FhP3TwPLbH1soE-W4hBBRmz4",
+                type: 'GET',
+                dataType: 'json',
+                success: (data) => {
+                    console.log('ajax succces');
+                    console.log(data);
+                },
+
+            });
+        });
+    });
+</script> -->

@@ -39,10 +39,14 @@ body{
 }
 
 [type="button"]{
-    background-color: #484848;
+    background-color: #263238;
     color: white;
 }
 [type="button"]:hover{
     background-color: white;
-    color: #484848;
+    color: #263238;
+}
+[type="button"]:focus-visible{
+    background-color:inherit;
+    color:inherit;
 }

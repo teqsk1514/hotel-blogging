@@ -3,16 +3,6 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <!-- <div class="col-md-3">
-                    <div class="lead">
-                        <img id="logo2" src="https://www.freeiconspng.com/uploads/beach-icon-png-13.png" />
-                    </div>
-                    <div class="list-group">
-                        <li class="list-group-item active">Info1</li>
-                        <li class="list-group-item">Info2</li>
-                        <li class="list-group-item">Info3</li>
-                    </div>
-                </div> -->
                 <div class="col-md-12">
                     <div class="thumbnail">
                         <img class="image-responsive card-image" height="480" width="720" src="<%=hotel.image %>" width="100%" />
@@ -47,18 +37,62 @@
                         </div>
                     </div>
                     <% if(!(currentUser && hotel.author.id.equals(currentUser._id))){ %>
-                    <div>
+                    <div style="margin-bottom:1rem">
                         <a href="/hotels/<%=hotel._id %>/book">
                             <button style="background-color:#212121;" class="btn btn-xs btn-raised btn-success">Book</button>
                         </a>
                     </div>
                     <% } %>
                     <div class="well">
-                        <div class="text-right">
-                            <a style="color:#3d00e0" class="btn btn-success" href="/hotels/<%=hotel._id %>/comments/new">Add
-                                New Comment</a>
-                        </div>
+                        <!-- <div class="row"> -->
+                        <!-- action="/hotels/<%= hotel._id %>/comments"  -->
+
+
+
+
+                        <form id="addCommentForm" action="/hotels/<%= hotel._id %>/comments" method="POST">
+                            <div class="row justify-content-between">
+                                <div class=" col-lg-9">
+                                    <input id="inputComment" placeholder="Write new comment" name="comment[text]"
+                                        required type="text" class="form-control" id="formGroupExampleInput">
+                                </div>
+                                <div class=" col-lg-3">
+                                    <button id="addCommentButton" style="background-color: #263238;color: white;" class="btn btn-raised btn-block">Add
+                                        Comment</button>
+                                </div>
+                            </div>
+                        </form>
+
+
+                        <!-- testing -->
+
+
+                        <!-- <form id="addCommentForm" action="/hotels/<%= hotel._id %>/comments" data-hotelId="<%= hotel._id %>"
+                            method="POST">
+                            <div class="row justify-content-between">
+                                <div class=" col-lg-9">
+                                    <input id="inputComment" placeholder="Write new comment" name="comment[text]"
+                                        required type="text" class="form-control" id="formGroupExampleInput">
+                                </div>
+                                <div class=" col-lg-3">
+                                    <button id="addCommentButton" style="background-color: #263238;color: white;" class="btn btn-raised btn-block">Add
+                                        Comment</button>
+                                </div>
+                            </div>
+                        </form>
                         <hr>
+
+                        <div id="listOfComment">
+
+                        </div>
+ -->
+
+
+
+                        <!-- testing -->
+
+
+
                         <% hotel.comments.reverse().forEach(function(comment){ %>
                         <div class="row">
                             <div class="col-md-12">
@@ -77,13 +111,33 @@
                                     </strong>
                                 </p>
                                 <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                                <a class="btn btn-xs btn-warning" href="/hotels/<%= hotel._id %>/comments/<%= comment._id %>/edit">
+                                <a class="btn btn-xs btn-warning" href="#<%= comment._id %>" data-toggle="collapse"
+                                    role="button" aria-expanded="false" aria-controls="<%= comment._id %>">
                                     Edit
                                 </a>
                                 <form style="display:inline;" action="/hotels/<%= hotel._id %>/comments/<%= comment._id %>?_method=DELETE"
                                     method="POST">
                                     <button class="btn btn-xs btn-danger">Delete</button>
                                 </form>
+                                <div class="collapse" id="<%= comment._id %>">
+                                    <div class="card card-body">
+                                        <form action="/hotels/<%= hotel._id %>/comments/<%= comment._id %>?_method=PUT"
+                                            method="POST">
+
+                                            <div class="row justify-content-between">
+                                                <div class=" col-lg-9">
+                                                    <input name="comment[text]" value="<%=comment.text %>" required
+                                                        type="text" class="form-control" id="formGroupExampleInput">
+                                                </div>
+                                                <div class=" col-lg-3">
+                                                    <button id="updateComment" style="background-color: #263238;color: white;"
+                                                        class="btn btn-raised btn-block">Update
+                                                        !</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 <% } %>
                             </div>
                         </div>
@@ -97,3 +151,43 @@
 </div>
 
 <% include ../partials/footer %>
+<!-- 
+<script type="text/javascript">
+    $(document).ready(() => {
+        $('#addCommentButton').click((event) => {
+
+            event.preventDefault();
+            event.stopPropagation();
+            console.log('add button clicked!!!!!!');
+            $.ajax({
+                // url: `/hotels/${$('#addCommentFOrm').data("hotelId")}/comments`,
+                // type: 'POST',
+                // contentType: 'application/json',
+                // data: JSON.stringify({ "comment": $('#inputComment').val() })
+
+                // asdasdad
+                url: "https://api.mlab.com/api/1/databases/hotel/collections/comments?apiKey=MFcosI02FhP3TwPLbH1soE-W4hBBRmz4",
+                data: JSON.stringify({ "x": 1 }),
+                type: "POST",
+                contentType: "application/json"
+            }).done((result) => {
+                console.log(result.x)
+                changeComment(result.x);
+                removeTextFromInput("inputComment")
+            }).fail((err) => {
+                console.log(err);
+            })
+                ;
+        })
+    });
+
+    var changeComment = (comment) => {
+        var div = document.getElementById('listOfComment');
+        div.innerHTML = comment;
+    }
+
+    var removeTextFromInput = (input) => {
+        var removeThis = document.getElementById(input);
+        removeThis.value = "";
+    }
+</script> -->

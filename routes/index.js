@@ -24,8 +24,8 @@ router.get('/booked', midddleware.isLoggedIn, (req, res) => {
             res.redirect("/hotels");
         }
         else {
-            console.log(req.user.username);
-            console.log(found.reverse());
+            console.log(req.user);
+            // console.log(found.reverse());
             res.render('booking/booked', { user: req.user.username, bookingDetails: found, len: found.length });
         }
     });
@@ -33,7 +33,24 @@ router.get('/booked', midddleware.isLoggedIn, (req, res) => {
 });
 //handles signup logic
 router.post("/register", function (req, res) {
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var username = req.body.username;
+    var email = req.body.email;
+    var phoneno = req.body.phoneno;
+
+    var createUser = {
+        firstname: firstname,
+        lastname: lastname,
+        username: username,
+        email: email,
+        phoneno: phoneno,
+    }
     var newUser = new User({ username: req.body.username });
+    // var newUser = new User(createUser);
+    // console.log(createUser);
+    // console.log('__________________________________________________________________--');
+    // console.log(newUser);
     User.register(newUser, req.body.password, function (err, user) {
         if (err) {
             req.flash("error", err.message);

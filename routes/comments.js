@@ -24,33 +24,34 @@ router.post("/", midddleware.isLoggedIn, function (req, res) {
             res.redirect("/hotels");
         }
         else {
-            Comment.create(req.body.comment, function (err, comment) {
-                if (err) {
-                    console.log(err);
-                }
-                else {
-                    comment.author.id = req.user._id;
-                    comment.author.username = req.user.username;
-                    comment.comment_on = Date.now();
-                    comment.save();
-                    hotel.comments.push(comment);
-                    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
-                    console.log(comment.comment_on);
-                    // console.log(hotel);
-                    hotel.save((result, err) => {
-                        if (err) {
-                            console.log(err);
-                        }
-                        else {
-                            console.log(result);
-                        }
+            Comment.create(req.body.comment,
+                function (err, comment) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        comment.author.id = req.user._id;
+                        comment.author.username = req.user.username;
+                        comment.comment_on = Date.now();
+                        comment.save();
+                        hotel.comments.push(comment);
+                        // console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+                        // console.log(comment.comment_on);
+                        // console.log(hotel);
+                        hotel.save((result, err) => {
+                            if (err) {
+                                console.log(err);
+                            }
+                            else {
+                                console.log(result);
+                            }
 
-                    });
-                    req.flash("success", "Comment added successfully!!");
-                    res.redirect('/hotels/' + hotel._id);
+                        });
+                        req.flash("success", "Comment added successfully!!");
+                        res.redirect('/hotels/' + hotel._id);
 
-                }
-            });
+                    }
+                });
 
         }
     });

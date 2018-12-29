@@ -1,0 +1,109 @@
+<% include ../partials/header %>
+<div class="container">
+    <div style="background-color:#f5f5f5" class="card">
+        <div class="card-body">
+            <div class="row justify-content-between">
+                <div class="col-lg-2">
+                    <button type="button" class="btn btn-raised">Edit Your Profile</button>
+                </div>
+                <div class="col-lg-2">
+                    <a style="background-color:#212121;margin-bottom: 1rem" class="btn btn-raised btn-primary" href="/hotels/new">
+                        Add a New Hotel
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3>
+                    Your Hotels
+                </h3>
+                <%if(len === 0){ %>
+                <div>
+                    <h4>
+                        You Dont have any Hotels
+                    </h4>
+
+                </div>
+                <% }%>
+
+                <div class="card">
+                    <% userHotelDetails.reverse().forEach(function(hotel){ %>
+                    <!-- <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <img class="image-responsive" height="100%" width="100%" src="<%=hotel.image %>" />
+                                </div>
+                                <div class="col-lg-9">
+                                    <h5 class="card-title">
+                                        <%= hotel.name %>
+                                    </h5>
+                                    <p class="card-text">
+                                        Description:
+                                        <%= hotel.description %>
+                                    </p>
+                                    <p class="card-text">
+                                        Created On:
+                                        <%= hotel.created_at %>
+                                    </p>
+                                    <p class="card-text">
+                                        Price:
+                                        <%= hotel.price %>
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div style="margin-top:1rem;" class="row">
+                                <div class="col-lg-4">
+                                    <a href="/hotels/<%= hotel.id %>" style="background-color:#3d00e0" class="btn btn-raised btn-primary">See
+                                        Hotel Details</a>
+                                </div>
+                                <div class="col-lg-4">
+                                    <a href="/hotels/<%= hotel._id  %>/edit" class="btn btn-xs btn-warning">
+                                        <i class="far fa-edit fa-lg"></i></a>
+                                </div>
+                                <form class="del" action="/hotels/<%=hotel._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-xs btn-danger"><i class="fas fa-trash fa-lg"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+
+                    <ul class="list-group ">
+                        <li class="list-group-item row">
+                            <h3 class="col-lg-3 col-xs-3">
+
+                                <%= hotel.name %>
+                            </h3>
+                            <a href="/hotels/<%= hotel.id %>" style="background-color:#263238" class=" col-lg-2  col-xs-1 col-sm-4 col-md-4 btn btn-raised btn-primary">See
+                                Hotel Details
+                            </a>
+                            <a href="/hotels/<%= hotel._id  %>/edit" class="col-lg-3 col-sm-4 col-md-4 btn btn-xs btn-warning">
+                                <i class="far fa-edit fa-lg"></i>Edit
+                            </a>
+
+                            <form class="col-lg-3 col-sm-4 col-md-4" style="display:inline;" action="/hotels/<%=hotel._id %>?_method=DELETE"
+                                method="POST">
+                                <button class="btn btn-xs btn-danger"><i class="fas fa-trash fa-lg"></i>Delete</button>
+                            </form>
+
+                            <!-- <form style="display:inline;" action="/hotels/<%=hotel._id %>?_method=DELETE" method="POST"
+                                class=" col-lg-3 col-sm-4 col-md-4">
+                                <button class="btn btn-danger">
+                                    <i class="fas fa-trash fa-lg"></i>Delete
+                                </button>
+                            </form> -->
+
+                        </li>
+                        <div class="dropdown-divider"></div>
+                    </ul>
+
+                    <!-- <div class="dropdown-divider"></div> -->
+                    <% });%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>

@@ -5,18 +5,14 @@ var Comment = require("../models/comment");
 var Booking = require("../models/booking");
 var midddleware = require("../middleware");
 //Comments New
+
+
 router.get("/", midddleware.isLoggedIn, function (req, res) {
     Hotel.findById(req.params.id, function (err, hotel) {
         if (err) {
             console.log(err);
         }
         else {
-            // console.log(req.params.id);
-            // console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-            // console.log(req.user);
-            // console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-            // console.log(hotel);
-
             res.render("booking/bookhotel", { hotel: hotel, user: req.user });
         }
     });
@@ -51,7 +47,7 @@ router.post("/", midddleware.isLoggedIn, function (req, res) {
                     newlyAdded.booked_on = Date.now();
                     newlyAdded.save();
                     console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-                    console.log(newlyAdded);
+                    // console.log(newlyAdded);
                     req.flash("success", "Booked successfully!! Your Booking Id is:->" + newlyAdded._id);
                     res.redirect('/hotels/' + hotel._id);
 

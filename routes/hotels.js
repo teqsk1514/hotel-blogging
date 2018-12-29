@@ -4,7 +4,7 @@ var Hotel = require("../models/hotel");
 var midddleware = require("../middleware");
 var Comment = require("../models/comment");
 //INDEX-show all hotels
-router.get("/", function (req, res) {
+router.get("/", function (req, res, next) {
     // console.log(req.user);
     //Get All rooms from DB
     Hotel.find({}, function (err, allhotels) {
@@ -13,6 +13,7 @@ router.get("/", function (req, res) {
         }
         else {
             // console.log(allhotels);
+            next();
             res.render("campgrounds/index", { hotels: allhotels, currentUser: req.user });
         }
 
@@ -20,7 +21,7 @@ router.get("/", function (req, res) {
 
 })
 //CREATE-add new hotels to database
-router.post("/", midddleware.isLoggedIn, function (req, res) {
+router.post("/", midddleware.isLoggedIn, function (req, res, next) {
     var name = req.body.name;
     var price = req.body.price;
     var image = req.body.image;
@@ -39,6 +40,7 @@ router.post("/", midddleware.isLoggedIn, function (req, res) {
         else {
             // console.log(newlyAdded);
             req.flash("success", "Hotel added Suceesfully!!");
+            next();
             res.redirect("/hotels");
         }
 
@@ -56,7 +58,7 @@ router.get("/:id", function (req, res) {
         }
         else {
             // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-            // console.log(foundHotel);
+            console.log(foundHotel);
             // console.log("############################################################");
             res.render("campgrounds/show", { hotel: foundHotel });
         }

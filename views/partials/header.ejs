@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
         integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 
 <body>
-    <nav style="margin-bottom:2rem;background-color:#212121" class="navbar navbar-expand-lg navbar-dark">
+    <nav style="margin-bottom:2rem;background-color:#000a12" class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="/hotels">
             <!-- <img id="logo" src="http://www.lakesidegrain.com/precisionag/images/lakeside-logo-solo.png" alt="Website Logo" /> -->
             <h2>
@@ -22,6 +24,7 @@
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- <i class="fab fa-angle-double-down"></i> -->
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
@@ -50,7 +53,7 @@
                     </a>
                 </li>
                 <% } else{ %>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">
                         <button disabled style="color:bisque ;cursor:auto;" type="button" class="btn">
                             Signed In As
@@ -69,18 +72,36 @@
                     <a class="nav-link" href="/logout">
                         <button type="button" class="btn btn-raised">Logout</button>
                     </a>
-                </li>
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        User
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">
-                            <%=currentUser.username %></a>
-                        <a class="dropdown-item" href="#">Log-Out</a>
-                    </div>
                 </li> -->
+
+
+                <!-- <a onmouseover="$('#navbarDropdownMenuLink').dropdown('toggle')" class="nav-link dropdown-toggle" href="http://example.com"
+                    id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown link
+                </a> -->
+
+
+                <div class="btn-group">
+                    <button style=" background-color: #263238;
+                    color: white;" class="btn dropdown dropdown-toggle"
+                        type="button" id="buttonMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-user-circle"></i>
+                        <%=currentUser.username %>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="buttonMenu1">
+                        <a class="dropdown-item" href="/user/profile">
+                            Profile
+                        </a>
+                        <a class="dropdown-item" href="/booked">
+                            My Bookings
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+
                 <% } %>
             </ul>
         </div>
