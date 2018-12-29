@@ -75,7 +75,7 @@ app.use("/hotels", hotelRoutes);
 
 const portno = 3000;
 
-app.listen(portno, () => {
+app.listen(3000, () => {
     console.log('###################')
-    console.log("The Hotel website server has been started", portno);
+    console.log("The Hotel website server has been started", 3000);
 });
