@@ -7,8 +7,8 @@ var User = require("../models/user");
 
 //Root route 
 router.get("/", function (req, res) {
-    res.redirect("/hotels");
-    // res.render("campgrounds/index");
+    // res.redirect("/hotels");
+    res.render("campgrounds/index");
 });
 //SHOW REGISTER FORM
 router.get("/register", function (req, res) {
