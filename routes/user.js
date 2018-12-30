@@ -17,4 +17,12 @@ router.get("/profile", midddleware.isLoggedIn, function (req, res) {
     });
 });
 
+
+
+router.get("/profile/edit", midddleware.isLoggedIn, (req, res, next) => {
+
+    res.render('user/edit');
+
+});
+
 module.exports = router;

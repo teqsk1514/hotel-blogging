@@ -33,19 +33,19 @@ router.get('/booked', midddleware.isLoggedIn, (req, res) => {
 });
 //handles signup logic
 router.post("/register", function (req, res) {
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
-    var username = req.body.username;
-    var email = req.body.email;
-    var phoneno = req.body.phoneno;
+    // var firstname = req.body.firstname;
+    // var lastname = req.body.lastname;
+    // var username = req.body.username;
+    // var email = req.body.email;
+    // var phoneno = req.body.phoneno;
 
-    var createUser = {
-        firstname: firstname,
-        lastname: lastname,
-        username: username,
-        email: email,
-        phoneno: phoneno,
-    }
+    // var createUser = {
+    //     firstname: firstname,
+    //     lastname: lastname,
+    //     username: username,
+    //     email: email,
+    //     phoneno: phoneno,
+    // }
     var newUser = new User({ username: req.body.username });
     // var newUser = new User(createUser);
     // console.log(createUser);
