@@ -1,7 +1,67 @@
 <% include partials/header %>
 
-<h1>
-    rasie
-</h1>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Raise an issue
+        </div>
+        <div class="card-body">
+            <form action="">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class="bmd-label-floating">Email address</label>
+                    <input required type="email" class="form-control" id="exampleInputEmail1">
+                    <span class="bmd-help">We'll never share your email with anyone else and please enter the valid
+                        email address.</span>
+                </div>
+                <div>
+                    <label for="exampleInputEmail1">Pick your Issue</label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Adding/Editing/Deleting a Hotel
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Adding/Editing/Deleting a Comment
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Booking
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Login
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Signup
+                    </label>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> logout
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Other Issue
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleTextarea" class="bmd-label-floating">Additional Information</label>
+                    <textarea name="response" class="form-control" id="exampleTextarea" rows="3"></textarea>
+                </div>
+                <button type="submit" style="background-color:#263238" class="btn btn-raised btn-info">Submit Your
+                    Response</button>
+            </form>
+        </div>
+    </div>
+</div>>
 
 <% include partials/footer %>

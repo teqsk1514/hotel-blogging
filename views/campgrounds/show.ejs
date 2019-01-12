@@ -1,4 +1,8 @@
 <% include ../partials/header %>
+
+<% if (hotel === null) { %>
+<h1>THe Hotel is deleated</h1>
+<% } else{ %>
 <div style="margin-bottom:2rem;" class="container">
     <div class="card">
         <div class="card-body">
@@ -68,24 +72,24 @@
 
 
                         <!-- <form id="addCommentForm" action="/hotels/<%= hotel._id %>/comments" data-hotelId="<%= hotel._id %>"
-                            method="POST">
-                            <div class="row justify-content-between">
-                                <div class=" col-lg-9">
-                                    <input id="inputComment" placeholder="Write new comment" name="comment[text]"
-                                        required type="text" class="form-control" id="formGroupExampleInput">
+                                method="POST">
+                                <div class="row justify-content-between">
+                                    <div class=" col-lg-9">
+                                        <input id="inputComment" placeholder="Write new comment" name="comment[text]"
+                                            required type="text" class="form-control" id="formGroupExampleInput">
+                                    </div>
+                                    <div class=" col-lg-3">
+                                        <button id="addCommentButton" style="background-color: #263238;color: white;" class="btn btn-raised btn-block">Add
+                                            Comment</button>
+                                    </div>
                                 </div>
-                                <div class=" col-lg-3">
-                                    <button id="addCommentButton" style="background-color: #263238;color: white;" class="btn btn-raised btn-block">Add
-                                        Comment</button>
-                                </div>
+                            </form>
+                            <hr>
+    
+                            <div id="listOfComment">
+    
                             </div>
-                        </form>
-                        <hr>
-
-                        <div id="listOfComment">
-
-                        </div>
- -->
+     -->
 
 
 
@@ -149,6 +153,7 @@
         </div>
     </div>
 </div>
+<% } %>
 
 <% include ../partials/footer %>
 <!-- 

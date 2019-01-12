@@ -11,7 +11,8 @@ var User = require("../models/user");
 
 
 router.get("/", function (req, res) {
-    res.render("admin/index");
+    // res.render("admin/index");
+    res.redirect('/admin/hotels');
 });
 
 
@@ -26,6 +27,15 @@ router.get("/hotels", function (req, res) {
         });
 
 });
+
+router.get('/hotel/delete/:id', (req, res) => {
+    Hotel.findByIdAndRemove(req.params.id, (err, found) => {
+        if (err) return res.status(500).send(err);
+        req.flash("success", "Hotel deleted!!! and the id is  " + req.params.id);
+        res.redirect("/admin/hotels");
+    })
+});
+
 router.get("/bookings", function (req, res) {
     Booking.find()
         .then((bookings) => {
@@ -36,15 +46,33 @@ router.get("/bookings", function (req, res) {
             throw err;
         });
 });
+
+router.get('/booking/delete/:id', (req, res) => {
+    Booking.findByIdAndRemove(req.params.id, (err, found) => {
+        if (err) return res.status(500).send(err);
+        req.flash("success", "Booking deleted!!! and the id is  " + req.params.id);
+        res.redirect("/admin/bookings");
+    })
+});
+
+
 router.get("/comments", function (req, res) {
     Comment.find()
         .then((comments) => {
-            console.log(comments);
+            // console.log(comments);
             res.render("admin/comments", { comments: comments });
         })
         .catch(err => {
             throw err;
         });
+});
+
+router.get('/comment/delete/:id', (req, res) => {
+    Comment.findByIdAndRemove(req.params.id, (err, found) => {
+        if (err) return res.status(500).send(err);
+        req.flash("success", "Comment deleted!!! and the id is  " + req.params.id);
+        res.redirect("/admin/comments");
+    })
 });
 
 
