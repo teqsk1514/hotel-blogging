@@ -3,17 +3,18 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="card col-lg-6">
+            <h1 class="alert-danger">Development in progress Dont Use this page</h1>
             <form action="/user/profile/edit" method="post">
                 <div style="text-align:center;margin-top:1rem">
                     <i class="fas fa-user-edit fa-5x"></i>
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput" class="bmd-label-floating">Full Name</label>
-                    <input name="phoneno" required type="text" class="form-control" id="formGroupExampleInput">
+                    <input name="fullname" required type="text" class="form-control" id="formGroupExampleInput">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput" class="bmd-label-floating">Valid Email Id</label>
-                    <input name="phoneno" required type="email" class="form-control" id="formGroupExampleInput">
+                    <input name="email" required type="email" class="form-control" id="formGroupExampleInput">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput" class="bmd-label-floating">Phone Number</label>
@@ -21,11 +22,11 @@
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput" class="bmd-label-floating">Address</label>
-                    <input name="phoneno" required type="text" class="form-control" id="formGroupExampleInput">
+                    <textarea rows="4" name="address" required type="text" class="form-control" id="formGroupExampleInput"></textarea>
                 </div>
                 <a style="background-color:#29434e;" class="btn btn-raised btn-secondary" href="/user/profile">Go
                     Back</a>
-                <button style="background-color:#1565c0;" type="submit" class="btn btn-primary btn-raised">Update</button>
+                <button disabled style="background-color:#1565c0;" type="submit" class="btn btn-primary btn-raised">Update</button>
             </form>
         </div>
     </div>

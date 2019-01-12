@@ -48,7 +48,7 @@ router.post("/", midddleware.isLoggedIn, function (req, res) {
                     newlyAdded.save();
                     console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
                     // console.log(newlyAdded);
-                    req.flash("success", "Booked successfully!! Your Booking Id is:->" + newlyAdded._id);
+                    req.flash("success", "Booked successfully!! Your Booking Id is:->" + newlyAdded._id + "    See Your Booking Page");
                     res.redirect('/hotels/' + hotel._id);
 
                 }

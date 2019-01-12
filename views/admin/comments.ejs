@@ -1,0 +1,35 @@
+<% include adminPartials/adminHeader %>
+<div style="padding:1rem 0" class="container">
+    <div class="card" style="width: 100%">
+        <div style="background-color:#BDBDBD" class="card-header">
+            Comment Details
+        </div>
+        <% comments.reverse().forEach(function(comment){ %>
+        <div style="padding: 1rem 1rem;" class="row">
+            <div class="col-lg-3">
+                <%= comment._id %>
+            </div>
+            <div class="col-lg-2">
+                <%= comment.text %>
+            </div>
+            <div class="col-lg-2">
+                <%= comment.comment_on %>
+            </div>
+            <div class="col-lg-2">
+                <%= comment.comment_updated_on %>
+            </div>
+            <div class="col-lg-2">
+                <%= comment.author.username %>
+            </div>
+            <div class="col-lg-1">
+                <a href="#">
+                    <i style="color:#ba000d" class="far fa-trash-alt"></i>
+                </a>
+            </div>
+
+        </div>
+        <div class="dropdown-divider"></div>
+        <% });%>
+    </div>
+</div>
+<% include adminPartials/adminFooter %>

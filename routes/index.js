@@ -7,8 +7,8 @@ var User = require("../models/user");
 
 //Root route 
 router.get("/", function (req, res) {
-    // res.redirect("/hotels");
-    res.render("campgrounds/index");
+    res.redirect("/hotels");
+    // res.render("campgrounds/index");
 });
 //SHOW REGISTER FORM
 router.get("/register", function (req, res) {
@@ -109,9 +109,23 @@ router.post("/login", passport.authenticate("local",
         res.redirect("/hotels");
     });
 
+
 router.get("/logout", function (req, res) {
     req.logout();
     req.flash("success", "Logged you out!");
     res.redirect("/hotels");
 });
+
+
+
+
+router.get('/raise', midddleware.isLoggedIn, (req, res, next) => {
+    res.render("raise");
+});
+
+router.get('/feedback', midddleware.isLoggedIn, (req, res, next) => {
+    res.render("feedback");
+});
+
+
 module.exports = router;
