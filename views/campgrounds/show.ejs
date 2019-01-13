@@ -1,7 +1,20 @@
 <% include ../partials/header %>
 
 <% if (hotel === null) { %>
-<h1>THe Hotel is deleated</h1>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Error Msg
+        </div>
+        <div style="text-align:center" class="card-body">
+            <h1>The Hotel is deleated</h1>
+            <a href="/hotels" style="background-color: #263238;" class=" btn btn-raised btn-info">Go Home</a>
+        </div>
+    </div>
+
+</div>
+
 <% } else{ %>
 <div style="margin-bottom:2rem;" class="container">
     <div class="card">
@@ -9,7 +22,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="thumbnail">
-                        <img class="image-responsive card-image" height="480" width="720" src="<%=hotel.image %>" width="100%" />
+                        <img class="image-responsive card-image hotel_image" src="<%=hotel.image %>" />
                         <div class="caption-full">
                             <h4 class="pull-right">Rs
                                 <%=hotel.price %> /Day</h4>

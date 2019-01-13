@@ -1,11 +1,10 @@
 var express = require("express");
 var router = express.Router();
-var passport = require("passport");
 var Booking = require("../models/booking");
 var Hotel = require("../models/hotel");
 var Comment = require("../models/comment");
 var User = require("../models/user");
-var midddleware = require("../middleware");
+// var midddleware = require("../middleware");
 var User = require("../models/user");
 
 

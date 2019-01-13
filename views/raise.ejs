@@ -9,7 +9,8 @@
             <form action="">
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="bmd-label-floating">Email address</label>
-                    <input required type="email" class="form-control" id="exampleInputEmail1">
+                    <input pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                        title="Please enter the email in valid format" required type="email" class="form-control" id="exampleInputEmail1">
                     <span class="bmd-help">We'll never share your email with anyone else and please enter the valid
                         email address.</span>
                 </div>
