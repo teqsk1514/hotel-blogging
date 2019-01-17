@@ -26,8 +26,8 @@ var commentRoutes = require("./routes/comments"),
 // }, () => {
 //     console.log('connected to mongodb');
 // });
-// mongoose.connect(`mongodb://ravi:teqsk1514@ds237700.mlab.com:37700/hotel`, { useNewUrlParser: true }, (err, done) => {
-mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds237700.mlab.com:37700/${process.env.MONGO_DB}`, { useNewUrlParser: true }, (err, done) => {
+// mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds237700.mlab.com:37700/${process.env.MONGO_DB}`, { useNewUrlParser: true }, (err, done) => {
+mongoose.connect("mongodb://ravi:teqsk1514@ds237700.mlab.com:37700/hotel", { useNewUrlParser: true }, (err, done) => {
     if (err) {
         console.log(err);
         console.log('Not connected to mlab');
