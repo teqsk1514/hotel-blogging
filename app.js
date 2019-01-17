@@ -73,7 +73,6 @@ app.use("/admin", adminRoutes);
 app.use("/user", userRoutes);
 app.use("/hotels", hotelRoutes);
 
-const portno = 3000;
 
 app.listen(3000, () => {
     console.log('###################')

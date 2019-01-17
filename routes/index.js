@@ -1,13 +1,26 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
+var Hotel = require("../models/hotel");
 var Booking = require("../models/booking");
 var midddleware = require("../middleware");
 var User = require("../models/user");
 
 //Root route 
 router.get("/", function (req, res) {
-    res.redirect("/hotels");
+    //Get All rooms from DB
+    Hotel.find({}, function (err, allhotels) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            // console.log(allhotels);
+            next();
+            res.render("campgrounds/index", { hotels: allhotels, currentUser: req.user });
+        }
+
+    });
+    // res.redirect("/hotels");
     // res.render("campgrounds/index");
 });
 //SHOW REGISTER FORM
