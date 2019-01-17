@@ -1,21 +1,59 @@
 var express = require("express");
 var router = express.Router();
+var passport = require("passport");
 var Booking = require("../models/booking");
 var Hotel = require("../models/hotel");
 var Comment = require("../models/comment");
 var User = require("../models/user");
-// var midddleware = require("../middleware");
+var Admin = require("../models/admin");
+var midddleware = require("../middleware");
 var User = require("../models/user");
 
 
 
 router.get("/", function (req, res) {
-    // res.render("admin/index");
-    res.redirect('/hotels');
+    // console.log(req.user);
+    Admin.find()
+        .then(result => {
+            console.log(result);
+        })
+        .catch(err => {
+            throw err;
+        });
+    res.render("admin/index");
+    // res.redirect('/hotels');
 });
 
+router.post('/', (req, res, next) => {
+    console.log(req.body.username);
+    Admin.findOne({ username: req.body.username })
+        .then(result => {
+            console.log(result);
+            res.redirect('/admin');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
 
-router.get("/hotels", function (req, res) {
+// router.get('/create', (req, res, next) => {
+//     var newAdmin = new Admin({ username: 'ravisk1514' });
+//     Admin.register(newAdmin, '123456', function (err, admin) {
+//         if (err) {
+//             req.flash("error", err.message);
+//             res.redirect("/admin");
+//         }
+//         else {
+//             console.log(admin);
+//             passport.authenticate("local")(req, res, function () {
+//                 req.flash("success", "Welcome to LakeSide :" + admin.username);
+//                 res.redirect("/admin/hotels");
+//             });
+//         }
+//     });
+// })
+
+router.get("/hotels", midddleware.isAdminLoggedIn, function (req, res) {
     Hotel.find()
         .then((hotels) => {
             console.log(hotels);
@@ -27,7 +65,7 @@ router.get("/hotels", function (req, res) {
 
 });
 
-router.get('/hotel/delete/:id', (req, res) => {
+router.get('/hotel/delete/:id', midddleware.isAdminLoggedIn, (req, res) => {
     Hotel.findByIdAndRemove(req.params.id, (err, found) => {
         if (err) return res.status(500).send(err);
         req.flash("success", "Hotel deleted!!! and the id is  " + req.params.id);
@@ -35,7 +73,7 @@ router.get('/hotel/delete/:id', (req, res) => {
     })
 });
 
-router.get("/bookings", function (req, res) {
+router.get("/bookings", midddleware.isAdminLoggedIn, function (req, res) {
     Booking.find()
         .then((bookings) => {
             // console.log(bookings);
@@ -46,7 +84,7 @@ router.get("/bookings", function (req, res) {
         });
 });
 
-router.get('/booking/delete/:id', (req, res) => {
+router.get('/booking/delete/:id', midddleware.isAdminLoggedIn, (req, res) => {
     Booking.findByIdAndRemove(req.params.id, (err, found) => {
         if (err) return res.status(500).send(err);
         req.flash("success", "Booking deleted!!! and the id is  " + req.params.id);
@@ -55,7 +93,7 @@ router.get('/booking/delete/:id', (req, res) => {
 });
 
 
-router.get("/comments", function (req, res) {
+router.get("/comments", midddleware.isAdminLoggedIn, function (req, res) {
     Comment.find()
         .then((comments) => {
             // console.log(comments);
@@ -66,7 +104,7 @@ router.get("/comments", function (req, res) {
         });
 });
 
-router.get('/comment/delete/:id', (req, res) => {
+router.get('/comment/delete/:id', midddleware.isAdminLoggedIn, (req, res) => {
     Comment.findByIdAndRemove(req.params.id, (err, found) => {
         if (err) return res.status(500).send(err);
         req.flash("success", "Comment deleted!!! and the id is  " + req.params.id);
@@ -75,7 +113,7 @@ router.get('/comment/delete/:id', (req, res) => {
 });
 
 
-router.get("/users", function (req, res) {
+router.get("/users", midddleware.isAdminLoggedIn, function (req, res) {
     User.find()
         .then((users) => {
             console.log(users);
