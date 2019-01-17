@@ -31,7 +31,6 @@ mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWO
         console.log('Not connected to mlab');
     }
     if (done) {
-
         console.log('connected to mlab');
     }
 });
