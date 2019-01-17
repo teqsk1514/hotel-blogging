@@ -18,6 +18,8 @@ var commentRoutes = require("./routes/comments"),
     adminRoutes = require("./routes/admin"),
     userRoutes = require("./routes/user");
 
+
+
 // mongoose.connect('mongodb://localhost/hotel_web', {
 //     useMongoClient: true,
 //     // useNewUrlParser: true,
