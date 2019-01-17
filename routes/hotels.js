@@ -13,7 +13,7 @@ router.get("/", function (req, res, next) {
         }
         else {
             // console.log(allhotels);
-            next();
+            // next();
             res.render("campgrounds/index", { hotels: allhotels, currentUser: req.user });
         }
 

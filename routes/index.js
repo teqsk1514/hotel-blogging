@@ -7,7 +7,7 @@ var midddleware = require("../middleware");
 var User = require("../models/user");
 
 //Root route 
-router.get("/", function (req, res) {
+router.get("/", function (req, res, next) {
     //Get All rooms from DB
     Hotel.find({}, function (err, allhotels) {
         if (err) {
@@ -15,13 +15,12 @@ router.get("/", function (req, res) {
         }
         else {
             // console.log(allhotels);
-            next();
+            // next();
             res.render("campgrounds/index", { hotels: allhotels, currentUser: req.user });
         }
 
     });
-    // res.redirect("/hotels");
-    // res.render("campgrounds/index");
+
 });
 //SHOW REGISTER FORM
 router.get("/register", function (req, res) {
