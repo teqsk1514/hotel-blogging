@@ -11,7 +11,7 @@ var User = require("../models/user");
 
 router.get("/", function (req, res) {
     // res.render("admin/index");
-    res.redirect('/admin/hotels');
+    res.redirect('/hotels');
 });
 
 
