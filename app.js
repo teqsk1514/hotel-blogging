@@ -75,9 +75,9 @@ app.use("/admin", adminRoutes);
 app.use("/user", userRoutes);
 app.use("/hotels", hotelRoutes);
 
-// app.listen(3000, () => {
-//     console.log('###################')
-//     console.log("The Hotel website server has been started", 3000);
-// });
+app.listen(process.env.PORT || 3000, () => {
+    console.log('###################')
+    console.log("The Hotel website server has been started", 3000);
+});
 
-app.listen(process.env.PORT || 3000);
+// app.listen(process.env.PORT || 3000);
