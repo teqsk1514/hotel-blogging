@@ -28,7 +28,7 @@
 
                 <div class="card">
                     <% userHotelDetails.reverse().forEach(function(hotel){ %>
-                    <!-- <div class="card">
+                    <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-3">
@@ -60,21 +60,20 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <a href="/hotels/<%= hotel._id  %>/edit" class="btn btn-xs btn-warning">
-                                        <i class="far fa-edit fa-lg"></i></a>
+                                        <i class="far fa-edit fa-lg"></i> Edit</a>
                                 </div>
-                                <form class="del" action="/hotels/<%=hotel._id %>?_method=DELETE" method="POST">
-                                    <button class="btn btn-xs btn-danger"><i class="fas fa-trash fa-lg"></i></button>
+                                <form class="del col-lg-4" action="/hotels/<%=hotel._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-xs btn-danger"><i class="fas fa-trash fa-lg"></i> Delete</button>
                                 </form>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
 
 
-
+                    <!-- 
                     <ul class="list-group ">
                         <li class="list-group-item row">
                             <h3 class="col-lg-3 col-xs-3">
-
                                 <%= hotel.name %>
                             </h3>
                             <a href="/hotels/<%= hotel.id %>" style="background-color:#263238" class=" col-lg-2  col-xs-1 col-sm-4 col-md-4 btn btn-raised btn-primary">See
@@ -83,24 +82,14 @@
                             <a href="/hotels/<%= hotel._id  %>/edit" class="col-lg-3 col-sm-4 col-md-4 btn btn-xs btn-warning">
                                 <i class="far fa-edit fa-lg"></i>Edit
                             </a>
-
-                            <form class="col-lg-3 col-sm-4 col-md-4" style="display:inline;" action="/hotels/<%=hotel._id %>?_method=DELETE"
-                                method="POST">
-                                <button class="btn btn-xs btn-danger"><i class="fas fa-trash fa-lg"></i>Delete</button>
+                            <form class="del col-lg-1" action="/hotels/<%=hotel._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-xs btn-danger"><i class="fas fa-trash fa-lg"></i> Delete</button>
                             </form>
-
-                            <!-- <form style="display:inline;" action="/hotels/<%=hotel._id %>?_method=DELETE" method="POST"
-                                class=" col-lg-3 col-sm-4 col-md-4">
-                                <button class="btn btn-danger">
-                                    <i class="fas fa-trash fa-lg"></i>Delete
-                                </button>
-                            </form> -->
-
                         </li>
                         <div class="dropdown-divider"></div>
-                    </ul>
+                    </ul> -->
 
-                    <!-- <div class="dropdown-divider"></div> -->
+                    <div class="dropdown-divider"></div>
                     <% });%>
                 </div>
             </div>

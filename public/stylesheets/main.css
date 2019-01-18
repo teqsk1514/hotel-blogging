@@ -22,14 +22,7 @@ body{
 .jumbotron{
     background-image: url(https://www.navitasventures.com/wp-content/uploads/2016/06/Material-design-background-514054880_2126x1416.jpeg);
     background-size: cover;
-    
- 
 }
-/* .navbar {
-    background-image: url(https://wallpaper.wiki/wp-content/uploads/2017/05/Desktop-hd-red-and-black-wallpaper-for-walls.png);
-    background-size: 100%;
-    
-} */
 .del{
     display: inline;
 }

@@ -50,15 +50,13 @@
                     </a>
                 </li> -->
                 <% } else{ %>
-
-                <div class="btn-group">
-                    <button style=" background-color: #263238;
-                    color: white;" class="btn dropdown dropdown-toggle"
-                        type="button" id="buttonMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item dropdown">
+                    <button style=" background-color: #263238;color: white;" class=" nav-link btn dropdown-toggle" href="#"
+                        id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-user-circle"></i>
                         <%=currentUser.username %>
                     </button>
-                    <div style="margin:0;padding:0" class="dropdown-menu dropdown-menu-right" aria-labelledby="buttonMenu1">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/user/profile">
                             Profile
                         </a>
@@ -76,8 +74,7 @@
                             Logout
                         </a>
                     </div>
-                </div>
-
+                </li>
                 <% } %>
             </ul>
         </div>
