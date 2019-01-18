@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit');
+@import url('https://fonts.googleapis.com/css?family=Bangers');
 
 body{
     font-family: 'Kanit', sans-serif;
@@ -18,7 +19,7 @@ body{
 }
 .jumbotron{
     background-image: url(https://www.navitasventures.com/wp-content/uploads/2016/06/Material-design-background-514054880_2126x1416.jpeg);
-    background-size: 100%;
+    background-size: cover;
     
  
 }
