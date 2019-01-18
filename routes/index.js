@@ -14,8 +14,6 @@ router.get("/", function (req, res, next) {
             console.log(err);
         }
         else {
-            // console.log(allhotels);
-            // next();
             res.render("campgrounds/index", { hotels: allhotels, currentUser: req.user });
         }
 
@@ -82,7 +80,10 @@ router.post("/register", function (req, res) {
 router.get("/login", function (req, res) {
     res.render("login");
 });
-
+// router.get("/login", function (req, res) {
+//     res.render("new-login");
+// });
+// 
 router.post("/login", passport.authenticate("local",
     {
         failureRedirect: "/login",

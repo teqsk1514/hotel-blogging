@@ -8,9 +8,6 @@
                         <%=hotel.name %>
                     </h2>
                     <form action="/hotels/<%= hotel._id %>/comments" method="POST">
-                        <!-- <div class="form-group">
-                                    <input required class="form-control" type="text" name="comment[text]" placeholder="Comments" />
-                                </div> -->
                         <div class="form-group">
                             <label for="formGroupExampleInput" class="bmd-label-floating">New Comments</label>
                             <input name="comment[text]" required type="text" class="form-control" id="formGroupExampleInput">

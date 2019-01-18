@@ -12,7 +12,6 @@
             <a href="/hotels" style="background-color: #263238;" class=" btn btn-raised btn-info">Go Home</a>
         </div>
     </div>
-
 </div>
 
 <% } else{ %>
@@ -32,8 +31,9 @@
                                 <%= hotel.description %>
                             </p>
                             <p>
-                                <em> Added By
-                                    <%= hotel.author.username %></em>
+                                <!-- <img src="data:image/png;base64,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"> -->
+                                <strong> Added By
+                                    <%= hotel.author.username %></strong>
                             </p>
                             <p>
                                 <em> Added on
@@ -61,12 +61,6 @@
                     </div>
                     <% } %>
                     <div class="well">
-                        <!-- <div class="row"> -->
-                        <!-- action="/hotels/<%= hotel._id %>/comments"  -->
-
-
-
-
                         <form id="addCommentForm" action="/hotels/<%= hotel._id %>/comments" method="POST">
                             <div class="row justify-content-between">
                                 <div class=" col-lg-9">
@@ -79,42 +73,17 @@
                                 </div>
                             </div>
                         </form>
-
-
-                        <!-- testing -->
-
-
-                        <!-- <form id="addCommentForm" action="/hotels/<%= hotel._id %>/comments" data-hotelId="<%= hotel._id %>"
-                                method="POST">
-                                <div class="row justify-content-between">
-                                    <div class=" col-lg-9">
-                                        <input id="inputComment" placeholder="Write new comment" name="comment[text]"
-                                            required type="text" class="form-control" id="formGroupExampleInput">
-                                    </div>
-                                    <div class=" col-lg-3">
-                                        <button id="addCommentButton" style="background-color: #263238;color: white;" class="btn btn-raised btn-block">Add
-                                            Comment</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <hr>
-    
-                            <div id="listOfComment">
-    
-                            </div>
-     -->
-
-
-
-                        <!-- testing -->
-
-
-
                         <% hotel.comments.reverse().forEach(function(comment){ %>
                         <div class="row">
                             <div class="col-md-12">
-                                <strong> By
-                                    <%= comment.author.username %></strong>
+                                <div class="row">
+                                    <p class="col-lg-3">
+                                        <img src="data:image/png;base64,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">
+                                        <strong class="align-middle"> By
+                                            <%= comment.author.username %></strong>
+                                    </p>
+
+                                </div>
                                 <p>Added on
                                     <%= comment.comment_on %>
                                 </p>
@@ -169,43 +138,3 @@
 <% } %>
 
 <% include ../partials/footer %>
-<!-- 
-<script type="text/javascript">
-    $(document).ready(() => {
-        $('#addCommentButton').click((event) => {
-
-            event.preventDefault();
-            event.stopPropagation();
-            console.log('add button clicked!!!!!!');
-            $.ajax({
-                // url: `/hotels/${$('#addCommentFOrm').data("hotelId")}/comments`,
-                // type: 'POST',
-                // contentType: 'application/json',
-                // data: JSON.stringify({ "comment": $('#inputComment').val() })
-
-                // asdasdad
-                url: "https://api.mlab.com/api/1/databases/hotel/collections/comments?apiKey=MFcosI02FhP3TwPLbH1soE-W4hBBRmz4",
-                data: JSON.stringify({ "x": 1 }),
-                type: "POST",
-                contentType: "application/json"
-            }).done((result) => {
-                console.log(result.x)
-                changeComment(result.x);
-                removeTextFromInput("inputComment")
-            }).fail((err) => {
-                console.log(err);
-            })
-                ;
-        })
-    });
-
-    var changeComment = (comment) => {
-        var div = document.getElementById('listOfComment');
-        div.innerHTML = comment;
-    }
-
-    var removeTextFromInput = (input) => {
-        var removeThis = document.getElementById(input);
-        removeThis.value = "";
-    }
-</script> -->
