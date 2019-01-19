@@ -5,6 +5,7 @@ var Hotel = require("../models/hotel");
 var Booking = require("../models/booking");
 var midddleware = require("../middleware");
 var User = require("../models/user");
+var Feedback = require("../models/feedback");
 
 //Root route 
 router.get("/", function (req, res, next) {
@@ -115,6 +116,22 @@ router.get('/raise', midddleware.isLoggedIn, (req, res, next) => {
 
 router.get('/feedback', (req, res, next) => {
     res.render("feedback");
+});
+
+router.post('/feedback', (req, res, next) => {
+    const feedbackData = req.body;
+    // console.log(feedbackData);
+    const feedback = new Feedback(feedbackData);
+    feedback.save()
+        .then(result => {
+            console.log("Your feedback has been saved!");
+            req.flash("success", "Thanks for your feedback We will get back soon!");
+            res.redirect("/hotels");
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
 });
 
 
