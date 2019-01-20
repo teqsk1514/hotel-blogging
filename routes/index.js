@@ -27,7 +27,6 @@ router.get("/register", function (req, res) {
 });
 
 // show booking information
-
 router.get('/booked', midddleware.isLoggedIn, (req, res) => {
     Booking.find({ 'author.username': req.user.username }, (err, found) => {
         if (err) {

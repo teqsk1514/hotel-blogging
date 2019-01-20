@@ -38,6 +38,7 @@ mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWO
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+app.use('/favicon.ico', express.static(__dirname + 'favicon.ico'));
 app.use(methodOverride("_method"));
 app.use(flash());
 // seedDB();

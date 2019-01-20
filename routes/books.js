@@ -4,7 +4,6 @@ var Hotel = require("../models/hotel");
 var Comment = require("../models/comment");
 var Booking = require("../models/booking");
 var midddleware = require("../middleware");
-//Comments New
 
 
 router.get("/", midddleware.isLoggedIn, function (req, res) {

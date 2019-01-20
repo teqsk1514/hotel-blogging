@@ -1,0 +1,33 @@
+<% include adminPartials/adminHeader %>
+<div style="padding:1rem 0" class="container">
+    <div class="card" style="width: 100%">
+        <div style="background-color:#BDBDBD" class="card-header">
+            Feadback Details
+        </div>
+        <% feedbacks.reverse().forEach(function(feedback){ %>
+        <div style="padding: 1rem 0.5rem;" class="row">
+            <div class="col-lg-3">
+                <%= feedback._id %>
+            </div>
+            <div class="col-lg-3">
+                <%= feedback.name %>
+            </div>
+            <div class="col-lg-3">
+                <%= feedback.email %>
+            </div>
+            <div class="col-lg-2">
+                <%= feedback.message %>
+            </div>
+            <div class="col-lg-1">
+                <a href="/admin/feedback/delete/<%= feedback._id %>">
+                    <i style="color:#ba000d" class="far fa-trash-alt"></i>
+                </a>
+            </div>
+
+        </div>
+        <!-- <button>Cancel Booking</button> -->
+        <div class="dropdown-divider"></div>
+        <% });%>
+    </div>
+</div>
+<% include adminPartials/adminFooter %>

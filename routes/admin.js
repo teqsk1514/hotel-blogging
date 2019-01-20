@@ -8,6 +8,7 @@ var User = require("../models/user");
 var Admin = require("../models/admin");
 var midddleware = require("../middleware");
 var User = require("../models/user");
+var Feedback = require("../models/feedback");
 
 
 
@@ -123,6 +124,27 @@ router.get("/users", midddleware.isAdminLoggedIn, function (req, res) {
             throw err;
         });
 });
+
+
+router.get("/feedback", function (req, res) {
+    Feedback.find()
+        .then((feedbacks) => {
+            console.log(feedbacks);
+            res.render("admin/feedback", { feedbacks: feedbacks });
+        })
+        .catch(err => {
+            throw err;
+        });
+});
+
+router.get('/feedback/delete/:id', (req, res) => {
+    Feedback.findByIdAndRemove(req.params.id, (err, found) => {
+        if (err) return res.status(500).send(err);
+        req.flash("success", "Feedback deleted!!! and the id is  " + req.params.id);
+        res.redirect("/admin/feedback");
+    })
+});
+
 
 
 module.exports = router;
