@@ -20,11 +20,15 @@
                 LakeSide
             </h2>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        <div style="color: white;" class="menu__buttom navbar-toggler" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <!-- <i class="fab fa-angle-double-down"></i> -->
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAArCAYAAADhXXHAAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAP5SURBVFhH7ZdLbBR1HMd7AG/gSRLlcSLxAZ5I8EQa6M7uatoqprSdR2cf89jSltLW2tfOMJVH2Z3ZJgQIhgAWowkJCUSPEuCgcADjkYAXvQioBxMTbTDR/v39hh9ks/Nvu519Heg3+WSzmf19v9+Z+c9jm1a1qirJNM+uVa3cNtUqtCcsN5mwCyZ+4veU472F2+mnjZHieBsStjeYsN0bCcv7O2l7bDH87ZZ7PZF1D+AcWdRemjO7FQrMJS3vn9JS5QA79wSKn0cfsqy+9jnOSxA0E7ZkEHceSn9S9SXS4+S2wKn8gR9aGbCUvk9mC5spqjIlrdm34Sg84gVVCzgQD9OOt50iwylt5V+HPf+dF1BtMCf0OjbHcy/DmvqRZ1wroPADzKUK5QuGPy81qxNzVKE8qXZ+N8ekTrgLKTvfTFWWF9yibvONnjJ58gLz5i6HBud5vs+xvFtUZWmlbO8drkERJ764wr66eTs0OM/zLUadyu2kSosLLqpPecPF9B09yYbcM6HBeZ5vMfBucYoqLS44BT/zhuuP+xNV4kudmt3IH2wMaSf/GlULKmkXBN5QKfVYBj5Zbw9VCypxqCBzh0qoxwXmY7kSVQtKHT82zB0qwTp9kZ348mpocJ7nW0oq6+6nakF1DtljvKFGIU0c7aVqQbVnRnK8oUbRMZDNULWg3k32jyjjx7iD9cdlrdpwiqoFFVUywt7+sSX/TyEz5y6xi19fCw3O83yLEUcP/xGXzRaqFtQeNbMxqpjz8PTgGjyjHneDNmP4QUw2XqVqfEUV49eOA5Ncg3oB7wUsJptLP8FQLZJ+Jiob/zVy7bYbQ39GROM0VVpcUVHbKUg6ey85AC8Tea5ZLekashnmRyV9B1VaWoKkfYcDrdogvv1wTWuBODrNBNn4NyJq31KV5QWnoBnKLvhHODXAeiaPc82rSdfIISyKmQsxWd9FVcoTDH2GZZGYkmGdwzY3pFIS2Tz7oHcUcgw/C47qeapQvuKyvD4iafefFUba9INMHj/CDV0p8NeJdR60WLwn89xfEPV77en0OqqwMkUVbSvs6W/FhZHW9CDrhtMWZj3jXWZv3xiLFZd8ymPMo+hwEpT0djB6WGLsA7c4v/iHAxOw5hwmfXzYL4P3SWVihkljR1j3R9OsY3CKvZ8ZYXG1N+DhI2q/xLr1bRRZmeKyvgkM73KDKiQi6XfQn6Kqox2muRYKT8NtbZ4XunK0eSjqNDc7ayii+or0mFsg7BxcfE+CBZYH5+A6OIs+ZFl7CUrvBgjvh6NzLSLqf5WWKga3A98IotEX70i9QhaNES6RSJf2JiyTthZRV+FRaeInfo+K5hs1PdWrerHU1PQ/H3r4zZofjrYAAAAASUVORK5CYII="> -->
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAArCAYAAADhXXHAAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN8SURBVFhH7Zg7b9RAFIUTQCAqHiVQ8Gh59IhIiEcJaUgD0dqbhABFCqpEsb2uyGPsBVEG8egAIUT+AAECP4RQAc2iUAYpyzmzN47tncl6N0II4U+62rXn7J3Z8Z3rO9NXUlJS0pkwDHc5QXTb8aOXrh89qnrqkjQZqUzXD0M36wZq0QnUDK+lyYgbxJfpl/7ZD/uTpu7gD9HpezeImpum1uF8UiQZKqE67frqR1YfNVy/fkokGTDQ6Zy2Cd/vhoZe7RRJcTCLd9qcwTALv4a96JjIEnD/o0mPP7gskoRqeP84/Rj1nrolsuKgkxdGZ7Cqr4ZFphkKw922zhEOa2wXqYa/N2lpjq+ei6w4jCWTM1rFj6+KTIOQ2YGY+2nSIjRW2S5SDSZi0Kil+WpBZMXhYtIx2uYs+jo+ObdPZAkY7JM2rdarxyJJcMIH+zHj39r1at0J4osi6w44nEo/XnbgeNF5ac5wfWr2ANqX0p3zmvdFkoF+0gPG9zXb4i0MF5NTi2/A4RXOiNy20OyvevG5ai2qul58ltfSYIT+GFL074SzR+V2Scm2mZh4uCeffrbi2t36XvnaEfqlf7nsnapfP4NV+qm1UtUqFtkz2+rmYkLaGYd2RVb3iuvHY7ZFRj/0R7/0r9+AlldzR8bCuSNw1mDHaYPjJdMAnJq6mddqfS0aFUmKZj/rAIO+MRLOHxJRceAM1VObM21MTyJLgP6LScsZFkmCG8wPmLQ06GdEVhx0/sbkjJafLcacSbdh+Zjk7006bX70WmTF2WpmWwk/i21mcf+zSBL4ZIxaGAqZeyIrji6kDTGLBfHWFLNcTG1amC1mGfsGfW8xS3RBjXqUq1VnAxQl9lcuBsDHi5nUHePTPNAWOhvA30Y2YD8jYXRSmnvnT+fZfL1bUrIdKp460dozqUH7q3YDvJmQ8Ft5dH7AlDXSjIb1g/TLepb9yO3e4Ha5m50COs5s3ZmebH/Q9aILyATfEy36gX5KmrtDH0CkOk4MezBT+kIyf2rWm/dg6YFumlrvdJBiBIOy7m756ESmYfr5q7tbOPx3zg2sJzKsPQ2bO/y5ZaPejz6IJGGrExnWxCIrDs+cEAq5mtN+1sXCGZp8LWE/64If7S+t7/WsiyDWUqeIaqHTAQSLH8z8DAaxyOqpU1GiD1LoV58ixuM9D7SkpOS/oq/vNxwqDwld2JLYAAAAAElFTkSuQmCC">
+        </div>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+        </button> -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <% if(!currentUser){ %>
