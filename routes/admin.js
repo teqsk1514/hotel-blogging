@@ -126,7 +126,7 @@ router.get("/users", midddleware.isAdminLoggedIn, function (req, res) {
 });
 
 
-router.get("/feedback", function (req, res) {
+router.get("/feedback", midddleware.isAdminLoggedIn, function (req, res) {
     Feedback.find()
         .then((feedbacks) => {
             console.log(feedbacks);
@@ -137,7 +137,7 @@ router.get("/feedback", function (req, res) {
         });
 });
 
-router.get('/feedback/delete/:id', (req, res) => {
+router.get('/feedback/delete/:id', midddleware.isAdminLoggedIn, (req, res) => {
     Feedback.findByIdAndRemove(req.params.id, (err, found) => {
         if (err) return res.status(500).send(err);
         req.flash("success", "Feedback deleted!!! and the id is  " + req.params.id);
