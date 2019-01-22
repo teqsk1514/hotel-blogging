@@ -93,7 +93,19 @@ body{
 
 /* navbar menu button */
 .menu__buttom{
-  margin: -11px 0 0 0;
+  margin: 0 0 0 0;
   padding: 0 0 0 1rem;
   border: none
+}
+
+.menu__text{
+    border:1px solid white;
+    padding:0.55rem 1rem 0.60rem 1rem;
+}
+
+.menu__text:hover,
+.menu__text:focus{
+    background:white;
+    color: #212121;
+    border:2px solid #212121;
 }

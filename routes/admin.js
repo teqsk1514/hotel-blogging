@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-var passport = require("passport");
 var Booking = require("../models/booking");
 var Hotel = require("../models/hotel");
 var Comment = require("../models/comment");
@@ -25,7 +24,7 @@ router.get("/", function (req, res) {
     // res.redirect('/hotels');
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', midddleware.isAdminLoggedIn, (req, res, next) => {
     console.log(req.body.username);
     Admin.findOne({ username: req.body.username })
         .then(result => {

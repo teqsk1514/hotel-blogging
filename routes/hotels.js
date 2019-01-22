@@ -3,6 +3,9 @@ var router = express.Router();
 var Hotel = require("../models/hotel");
 var midddleware = require("../middleware");
 var Comment = require("../models/comment");
+const Validator = require('validator');
+const isEmpty = require('../validation/is-empty');
+
 //INDEX-show all hotels
 router.get("/", function (req, res, next) {
     // console.log(req.user);
@@ -22,29 +25,47 @@ router.get("/", function (req, res, next) {
 })
 //CREATE-add new hotels to database
 router.post("/", midddleware.isLoggedIn, function (req, res, next) {
-    var name = req.body.name;
-    var price = req.body.price;
-    var image = req.body.image;
-    var desc = req.body.description;
-    var created_at = Date.now();
-    var author = {
+    const name = req.body.name;
+    const price = req.body.price;
+    const image = req.body.image;
+    const desc = req.body.description;
+    const created_at = Date.now();
+    const author = {
         id: req.user._id,
         username: req.user.username
     }
-    var newHotel = { name: name, price: price, image: image, description: desc, author: author, created_at: created_at }
-    //add a new room and save it to the database
-    Hotel.create(newHotel, function (err, newlyAdded) {
-        if (err) {
-            req.flash("error", "Not added");
-        }
-        else {
-            // console.log(newlyAdded);
-            req.flash("success", "Hotel added Suceesfully!!");
-            next();
-            res.redirect("/hotels");
-        }
 
-    });
+    let errors = {};
+
+    if (!Validator.isURL(image)) {
+        errors.image = 'Not a valid image url';
+    }
+
+    if (!Validator.isLength(desc, { min: 10, max: 300 })) {
+        errors.desc = 'Description should be in between 10 and 300 character';
+    }
+    console.log(errors);
+
+    const isValid = isEmpty(errors);
+
+    if (!isValid) {
+        req.flash("error", errors.image);
+        req.flash("error", errors.desc);
+        res.redirect("/hotels/new");
+    } else {
+        const newHotel = { name: name, price: price, image: image, description: desc, author: author, created_at: created_at }
+        //add a new room and save it to the database
+        Hotel.create(newHotel, function (err, newlyAdded) {
+            if (err) {
+                req.flash("error", "Not added");
+            } else {
+                // console.log(newlyAdded);
+                req.flash("success", "Hotel added Suceesfully!!");
+                res.redirect("/hotels");
+            }
+
+        });
+    }
 });
 //NEW-show form to add new hotels
 router.get("/new", midddleware.isLoggedIn, function (req, res) {
