@@ -5,8 +5,14 @@
 body{
     /* font-family: 'Kanit', sans-serif; */
     font-family: 'Roboto', sans-serif;
-    background-image: url(https://www.navitasventures.com/wp-content/uploads/2016/06/Material-design-background-514054880_2126x1416.jpeg);
+    background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/11/HD-Flat-Design-Photos.jpg);
+    /* background: #212121; */
     background-size: cover;
+    /* position: relative;
+  background: url('https://www.pixelstalk.net/wp-content/uploads/2016/11/HD-Flat-Design-Photos.jpg') no-repeat;
+  background-size: cover;
+  background-position: center; */
+  /* height: 100%; */
     
 }
 
@@ -109,3 +115,7 @@ body{
     color: #212121;
     border:2px solid #212121;
 }
+/* 
+.card:hover{
+    filter: drop-shadow(0 0 0.95rem #212121);
+} */
