@@ -17,7 +17,17 @@ router.get("/", function (req, res, next) {
             console.log(err);
         }
         else {
-            res.render("campgrounds/index", { hotels: allhotels, currentUser: req.user });
+            const imageUrl = allhotels.map(hotel => {
+                return {
+                    image: hotel.image,
+                    name: hotel.name
+                };
+            })
+            res.render("campgrounds/index", {
+                hotels: allhotels,
+                images: imageUrl.slice(0, 6),
+                currentUser: req.user
+            });
         }
 
     });
