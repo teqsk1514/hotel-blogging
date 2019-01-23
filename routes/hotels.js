@@ -15,9 +15,20 @@ router.get("/", function (req, res, next) {
             console.log(err);
         }
         else {
-            // console.log(allhotels);
+            const imageUrl = allhotels.map(hotel => {
+                return {
+                    image: hotel.image,
+                    name: hotel.name
+                };
+            })
+            // console.log(imageUrl.slice(0, 6));
+            console.log(imageUrl.slice(0, 6));
             // next();
-            res.render("campgrounds/index", { hotels: allhotels, currentUser: req.user });
+            res.render("campgrounds/index", {
+                hotels: allhotels,
+                images: imageUrl.slice(0, 6),
+                currentUser: req.user
+            });
         }
 
     });

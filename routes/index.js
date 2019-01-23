@@ -6,6 +6,8 @@ var Booking = require("../models/booking");
 var midddleware = require("../middleware");
 var User = require("../models/user");
 var Feedback = require("../models/feedback");
+const isEmpty = require('../validation/is-empty');
+const Validator = require('validator');
 
 //Root route 
 router.get("/", function (req, res, next) {
@@ -45,7 +47,7 @@ router.get('/booked', midddleware.isLoggedIn, (req, res) => {
 router.post("/register", function (req, res) {
     // var firstname = req.body.firstname;
     // var lastname = req.body.lastname;
-    // var username = req.body.username;
+    var username = req.body.username;
     // var email = req.body.email;
     // var phoneno = req.body.phoneno;
 
@@ -56,23 +58,40 @@ router.post("/register", function (req, res) {
     //     email: email,
     //     phoneno: phoneno,
     // }
-    var newUser = new User({ username: req.body.username });
-    // var newUser = new User(createUser);
-    // console.log(createUser);
-    // console.log('__________________________________________________________________--');
-    // console.log(newUser);
-    User.register(newUser, req.body.password, function (err, user) {
-        if (err) {
-            req.flash("error", err.message);
-            res.redirect("register");
-        }
-        else {
-            passport.authenticate("local")(req, res, function () {
-                req.flash("success", "Welcome to LakeSide :" + user.username);
-                res.redirect("/hotels");
-            });
-        }
-    });
+
+    let errors = {};
+
+    if (!Validator.isEmail(username)) {
+        errors.email = 'Not a valid Email Id';
+    }
+    console.log(errors);
+
+    const isValid = isEmpty(errors);
+
+    if (!isValid) {
+        req.flash("error", errors.email);
+        res.redirect("/register");
+    } else {
+        var newUser = new User({
+            username: username,
+        });
+        // var newUser = new User(createUser);
+        // console.log(createUser);
+        // console.log('__________________________________________________________________--');
+        // console.log(newUser);
+        User.register(newUser, req.body.password, function (err, user) {
+            if (err) {
+                req.flash("error", err.message);
+                res.redirect("register");
+            }
+            else {
+                passport.authenticate("local")(req, res, function () {
+                    req.flash("success", "Welcome to LakeSide :" + user.username);
+                    res.redirect("/hotels");
+                });
+            }
+        });
+    }
 });
 
 
@@ -89,13 +108,9 @@ router.post("/login", passport.authenticate("local",
         failureRedirect: "/login",
         failureFlash: true
     }), function (req, res, next) {
-        // if (req.body.username == "admin") {
-        //     res.redirect("/admin");
-        // }
+        console.log(req.body);
         req.flash('Username or password is incorrect');
         req.flash("success", "Welcome to LakeSide :" + req.body.username);
-        // console.log(User.schema);
-        // next();
         res.redirect("/hotels");
     });
 

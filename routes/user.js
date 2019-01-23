@@ -3,6 +3,7 @@ var router = express.Router();
 var midddleware = require("../middleware");
 var Hotel = require("../models/hotel");
 
+
 router.get("/profile", midddleware.isLoggedIn, function (req, res) {
     Hotel.find({ 'author.username': req.user.username }, (err, found) => {
         if (err) {

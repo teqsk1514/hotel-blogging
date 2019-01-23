@@ -17,7 +17,7 @@
                         </h2>
                     </div>
                 </div>
-                <% hotels.forEach(function(hotel){ %>
+                <% images.forEach(function(hotel){ %>
                 <div class="carousel-item">
                     <img class="slider" src="<%=hotel.image %>" alt="<%=hotel.name %>">
                     <div class="carousel-caption d-none d-md-block">
@@ -52,7 +52,7 @@
 
     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
         <% hotels.reverse().forEach(function(hotel){ %>
-        <div class="col-md-3 col-sm-6">
+        <div class="col-lg-3 col-md-4 col-sm-6">
             <div style="margin-bottom:2rem;" class="card">
                 <img class="card-img-top" width="350" height="200" src="<%= hotel.image %>" alt="">
                 <!-- <img src="<%= hotel.image %>" width="350" height="200" /> -->
