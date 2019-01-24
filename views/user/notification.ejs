@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="card">
+        <div style="font-family: 'Bangers' , cursive;font-size: 1.5em;" class="card-header">
+            Notifications
+        </div>
+        <div class="card-body">
+
+            <%if(notificationlen === 0){ %>
+            <div>
+                <h4>
+                    You Dont have any Notifications
+                </h4>
+
+            </div>
+            <% }%>
+
+
+            <% notifications.forEach(function(notification){ %>
+            <div style="padding: 1rem 0.5rem;" class=" row">
+                <div style="font-family: 'Acme', sans-serif;font-size: 1.5em;border-left: 0.25rem solid black" class="col-lg-6">
+                    <%= notification.message %>
+                </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <% });%>
+
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>

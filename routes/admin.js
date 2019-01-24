@@ -113,6 +113,17 @@ router.get('/comment/delete/:id', midddleware.isAdminLoggedIn, (req, res) => {
 });
 
 
+// router.get("/users", function (req, res) {
+//     User.find()
+//         .then((users) => {
+//             console.log(users);
+//             res.render("admin/users", { users: users });
+//         })
+//         .catch(err => {
+//             throw err;
+//         });
+// });
+
 router.get("/users", midddleware.isAdminLoggedIn, function (req, res) {
     User.find()
         .then((users) => {
@@ -142,6 +153,48 @@ router.get('/feedback/delete/:id', midddleware.isAdminLoggedIn, (req, res) => {
         req.flash("success", "Feedback deleted!!! and the id is  " + req.params.id);
         res.redirect("/admin/feedback");
     })
+});
+
+
+router.get("/notification", midddleware.isAdminLoggedIn, function (req, res) {
+    res.render('admin/sendingNotification');
+});
+
+
+router.post("/notification", midddleware.isAdminLoggedIn, function (req, res) {
+    console.log(req.body);
+
+    User
+        .findById(req.body.userId)
+        .then(user => {
+            // console.log(user.notification);
+            const newNotification = { message: req.body.message };
+            updatedNotification = [...user.notification, newNotification];
+            console.log(updatedNotification);
+
+            User
+                .updateOne({ _id: req.body.userId }, { $set: { notification: updatedNotification } })
+                .then(user => {
+                    console.log(user);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        })
+        .catch(err => {
+            console.log(err)
+        });
+
+
+    // User
+    //     .updateOne({ _id: req.body.userId }, { $set: { notification: [{ message: req.body.message }] } })
+    //     .then(user => {
+    //         console.log(user);
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     })
+    res.redirect('/admin/notification');
 });
 
 

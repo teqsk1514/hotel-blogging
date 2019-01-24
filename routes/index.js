@@ -142,6 +142,14 @@ router.get('/feedback', (req, res, next) => {
     res.render("feedback");
 });
 
+router.get('/notification', midddleware.isLoggedIn, (req, res, next) => {
+    // console.log(req.user.notification.length);
+    res.render("user/notification", {
+        notifications: req.user.notification,
+        notificationlen: req.user.notification.length
+    });
+});
+
 router.post('/feedback', (req, res, next) => {
     const feedbackData = req.body;
     // console.log(feedbackData);
