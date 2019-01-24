@@ -46,8 +46,6 @@ router.get('/booked', midddleware.isLoggedIn, (req, res) => {
             res.redirect("/hotels");
         }
         else {
-            console.log(req.user);
-            // console.log(found.reverse());
             res.render('booking/booked', { user: req.user.username, bookingDetails: found, len: found.length });
         }
     });
@@ -55,26 +53,13 @@ router.get('/booked', midddleware.isLoggedIn, (req, res) => {
 });
 //handles signup logic
 router.post("/register", function (req, res) {
-    // var firstname = req.body.firstname;
-    // var lastname = req.body.lastname;
-    var username = req.body.username;
-    // var email = req.body.email;
-    // var phoneno = req.body.phoneno;
-
-    // var createUser = {
-    //     firstname: firstname,
-    //     lastname: lastname,
-    //     username: username,
-    //     email: email,
-    //     phoneno: phoneno,
-    // }
+    const username = req.body.username;
 
     let errors = {};
 
     if (!Validator.isEmail(username)) {
         errors.email = 'Not a valid Email Id';
     }
-    console.log(errors);
 
     const isValid = isEmpty(errors);
 
@@ -85,10 +70,6 @@ router.post("/register", function (req, res) {
         var newUser = new User({
             username: username,
         });
-        // var newUser = new User(createUser);
-        // console.log(createUser);
-        // console.log('__________________________________________________________________--');
-        // console.log(newUser);
         User.register(newUser, req.body.password, function (err, user) {
             if (err) {
                 req.flash("error", err.message);
@@ -118,7 +99,7 @@ router.post("/login", passport.authenticate("local",
         failureRedirect: "/login",
         failureFlash: true
     }), function (req, res, next) {
-        console.log(req.body);
+        // console.log(req.body);
         req.flash('Username or password is incorrect');
         req.flash("success", "Welcome to LakeSide :" + req.body.username);
         res.redirect("/hotels");
@@ -149,6 +130,31 @@ router.get('/notification', midddleware.isLoggedIn, (req, res, next) => {
         notificationlen: req.user.notification.length
     });
 });
+
+router.post('/notification', midddleware.isLoggedIn, (req, res, next) => {
+    console.log(req.body);
+    User.findById(req.user._id)
+        // .updateOne({ _id: req.user._id }, { $pullAll: { notification: [{ _id: req.body.not_id }] } })
+        .then(user => {
+            console.log(user);
+            console.log('----------------------------------------------------------');
+            const updatedNotification = user.notification.filter(noti => noti._id.toString() !== req.body.not_id);
+            // const updatedUserInfo = {
+            //     ...user._doc,
+            //     notification: updatedNotification
+            // }
+            return User.findByIdAndUpdate(req.user._id, { $set: { notification: updatedNotification } })
+        })
+        .then(result => {
+            console.log('result');
+            console.log(result);
+            res.redirect('/notification');
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
 
 router.post('/feedback', (req, res, next) => {
     const feedbackData = req.body;
