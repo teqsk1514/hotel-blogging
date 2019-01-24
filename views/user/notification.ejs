@@ -14,13 +14,15 @@
 
             </div>
             <% }%>
-
-
-            <% notifications.forEach(function(notification){ %>
+            <% notifications.reverse().forEach(function(notification){ %>
             <div style="padding: 1rem 0.5rem;" class=" row">
-                <div style="font-family: 'Acme', sans-serif;font-size: 1.5em;border-left: 0.25rem solid black" class="col-lg-6">
+                <div style="font-family: 'Acme', sans-serif;font-size: 1.5em;border-left: 0.25rem solid black" class="col-lg-8">
                     <%= notification.message %>
                 </div>
+                <form class="col-lg-4 del d-flex justify-content-end" action="/notification" method="POST">
+                    <input hidden type="text" name="not_id" id="not_id" value="<%= notification._id %>">
+                    <button class="btn btn-xs btn-danger" type="submit">Clear</button>
+                </form>
             </div>
             <div class="dropdown-divider"></div>
             <% });%>

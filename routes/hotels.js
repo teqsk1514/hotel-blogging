@@ -22,7 +22,7 @@ router.get("/", function (req, res, next) {
                 };
             })
             // console.log(imageUrl.slice(0, 6));
-            console.log(imageUrl.slice(0, 6));
+            // console.log(imageUrl.slice(0, 6));
             // next();
             res.render("campgrounds/index", {
                 hotels: allhotels,
