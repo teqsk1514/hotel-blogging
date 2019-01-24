@@ -12,7 +12,7 @@ var commentRoutes = require("./routes/comments"),
     hotelRoutes = require("./routes/hotels"),
     indexRoutes = require("./routes/index"),
     bookRoutes = require("./routes/books"),
-    adminRoutes = require("./routes/admin"),
+    // adminRoutes = require("./routes/admin"),
     userRoutes = require("./routes/user");
 
 
@@ -68,7 +68,7 @@ app.use(function (req, res, next) {
 app.use("/hotels/:id/comments", commentRoutes);
 app.use("/hotels/:id/book", bookRoutes);
 app.use("/", indexRoutes);
-app.use("/admin", adminRoutes);
+// app.use("/admin", adminRoutes);
 app.use("/user", userRoutes);
 app.use("/hotels", hotelRoutes);
 
