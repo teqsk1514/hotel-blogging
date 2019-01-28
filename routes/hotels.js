@@ -4,6 +4,7 @@ var Hotel = require("../models/hotel");
 var midddleware = require("../middleware");
 var Comment = require("../models/comment");
 const Validator = require('validator');
+const moment = require('moment');
 const isEmpty = require('../validation/is-empty');
 
 //INDEX-show all hotels
@@ -82,6 +83,8 @@ router.post("/", midddleware.isLoggedIn, function (req, res, next) {
 router.get("/new", midddleware.isLoggedIn, function (req, res) {
     res.render("campgrounds/new");
 });
+
+
 //SHOW-shows more info about one hotel
 router.get("/:id", function (req, res) {
     Hotel.findById(req.params.id).populate("comments").exec(function (err, foundHotel) {
@@ -90,9 +93,9 @@ router.get("/:id", function (req, res) {
         }
         else {
             // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-            console.log(foundHotel);
+            // console.log(foundHotel);
             // console.log("############################################################");
-            res.render("campgrounds/show", { hotel: foundHotel });
+            res.render("campgrounds/show", { hotel: foundHotel, moment: moment });
         }
     });
 });

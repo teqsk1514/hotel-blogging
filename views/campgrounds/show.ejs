@@ -42,13 +42,19 @@
                                     <%= hotel.author.username %></strong>
                             </p>
                             <p>
-                                <em> Added on
-                                    <%= hotel.created_at %></em>
+                                <em> Added
+                                    <strong>
+                                        <%= moment(hotel.created_at).fromNow() %>
+                                    </strong>
+                                </em>
                             </p>
                             <% if(hotel.updated_at){ %>
                             <p>
-                                <em> Updated on
-                                    <%= hotel.updated_at %></em>
+                                <em> Updated
+                                    <strong>
+                                        <%= moment(hotel.updated_at).fromNow() %>
+                                    </strong>
+                                </em>
                             </p>
                             <% } %>
                             <% if(currentUser && hotel.author.id.equals(currentUser._id)){ %>
@@ -122,12 +128,14 @@
                                     </div>
                                 </div>
                                 <% } %>
-                                <p>Added on
-                                    <%= comment.comment_on %>
+                                <% if(!comment.comment_updated_on){%>
+                                <p>
+                                    <%= moment(comment.comment_on).fromNow() %>
                                 </p>
+                                <% } %>
                                 <% if(comment.comment_updated_on){%>
-                                <p>Updated on
-                                    <%= comment.comment_updated_on %>
+                                <p>
+                                    <%= moment(comment.comment_updated_on).fromNow() %>
                                 </p>
                                 <% } %>
 
