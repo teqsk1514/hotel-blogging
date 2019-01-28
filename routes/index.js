@@ -76,10 +76,32 @@ router.post("/register", function (req, res) {
                 res.redirect("register");
             }
             else {
-                passport.authenticate("local")(req, res, function () {
-                    req.flash("success", "Welcome to LakeSide :" + user.username);
-                    res.redirect("/hotels");
-                });
+                // console.log(user);
+
+                User
+                    .findById(user._id)
+                    .then(user => {
+                        // console.log(user.notification);
+                        const newNotification = { message: 'Welcome to LakeSide' };
+                        updatedNotification = [...user.notification, newNotification];
+                        console.log(updatedNotification);
+
+                        User
+                            .updateOne({ _id: user._id }, { $set: { notification: updatedNotification } })
+                            .then(result => {
+                                console.log(result);
+                                passport.authenticate("local")(req, res, function () {
+                                    req.flash("success", "Welcome to LakeSide :" + user.username);
+                                    res.redirect("/hotels");
+                                });
+                            })
+                            .catch(err => {
+                                console.log(err)
+                            })
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    });
             }
         });
     }
